@@ -1,0 +1,10 @@
+language: c
+
+addons:
+  apt:
+    packages:
+      - cmake
+      - libc6
+      - valgrind
+
+script: echo 'hello world'
