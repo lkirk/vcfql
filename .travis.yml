@@ -7,4 +7,8 @@ addons:
       - libc6
       - valgrind
 
-script: echo 'hello world'
+script: >
+     mkdir build
+  && cd build
+  && cmake ..
+  && ctest -V -D ExperimentalMemCheck
