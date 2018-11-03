@@ -7,4 +7,4 @@ addons:
       - libc6
       - valgrind
 
-script: mkdir build && cd build && cmake .. && ctest -V -D ExperimentalMemCheck
+script: mkdir build && cd build && cmake .. && make && ctest -V -D ExperimentalMemCheck
