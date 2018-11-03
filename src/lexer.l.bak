@@ -1,0 +1,45 @@
+%{
+#include <stdio.h>
+#include "parser.h"
+    int c;
+    extern int yylval;
+%}
+/* digit [0-9] */
+/* integer {digit}+ */
+/* real ({digit}+[.]{digit}*)|({digit}*[.]{digit}+) */
+/* exp ({integer}|{real})[eE]-?{integer} */
+%%
+
+"#"[^\r\n]* { /* comments */ }
+
+"!="  { return NEQ;       }
+"=="  { return EQ;        }
+"and" { return AND;       }
+"or"  { return OR;        }
+"|"   { return PIPE;      }
+"<="  { return LESSEQ;    }
+">="  { return GREATEREQ; }
+"<"   { return LESS;      }
+">"   { return GREATER;   }
+
+" " /* empty */;
+
+[a-z]+ {
+    yylval = *yytext;
+    return(LETTER);
+}
+
+([1-9][0-9]+|[0-9])?\.[0-9]+ {
+    yylval = atof(yytext);
+    return(FLOAT);
+}
+
+[0-9] {
+    yylval = atoi(yytext);
+    return(DIGIT);
+}
+
+[^a-z0-9\b] {
+    c = yytext[0];
+    return(c);
+}

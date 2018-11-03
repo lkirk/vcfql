@@ -1,0 +1,3 @@
+#cmakedefine BCF_VERSION "@BCF_VERSION@"
+#cmakedefine BCF_BUG_ADDRESS "@BCF_BUG_ADDRESS@"
+#cmakedefine BCF_DOC_STRING "@BCF_DOC_STRING@"
